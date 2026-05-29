@@ -1,0 +1,49 @@
+import { assertEquals } from "@std/assert";
+import { Knobelscheit } from "./knobelscheit.ts";
+
+Deno.test("numbers get flipped if they add up to dice", () => {
+  // Arrange
+  const knobelscheit = new Knobelscheit;
+    
+  // Act
+    const worked = knobelscheit.flip([2,3], 5)
+
+  // Assert
+  assertEquals(worked, true)
+});
+
+
+Deno.test("numbers dont get flipped if they add up to dice", () => {
+  // Arrange
+  const knobelscheit = new Knobelscheit;
+    
+  // Act
+    const worked = knobelscheit.flip([2,3], 6);
+
+  // Assert
+  assertEquals(worked, false);
+});
+
+Deno.test("if flipped numbers = 9, return win true", () => {
+    // Arrange
+    const knobelscheit = new Knobelscheit;
+    knobelscheit.flip([1,2,3,4,5,6,7,8,9], 45);
+
+    // Act
+    const won = knobelscheit.checkWin();
+
+    // Assert
+    assertEquals(won, true);
+})
+
+Deno.test("if flipped numbers != 9, return win false", () => {
+    // Arrange
+    const knobelscheit = new Knobelscheit;
+    knobelscheit.flip([1,2,3,4], 10);
+
+    // Act
+    const won = knobelscheit.checkWin();
+
+    // Assert
+    assertEquals(won, false);
+})
