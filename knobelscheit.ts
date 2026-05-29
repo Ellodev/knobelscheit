@@ -24,4 +24,23 @@ export class Knobelscheit {
             return false;
         }
     }
+    checkIfLost(n: number):boolean {
+        let open = 0
+        for(let i = 1; i <= 9; i++)
+        {
+            if(!this.flipped.has(i))
+            {
+                open += i
+            }
+        }
+        if(n > open)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+
+    }
 }

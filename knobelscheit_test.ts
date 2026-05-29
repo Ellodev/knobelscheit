@@ -47,3 +47,33 @@ Deno.test("if flipped numbers != 9, return win false", () => {
     // Assert
     assertEquals(won, false);
 })
+
+
+
+Deno.test("Checks if lost case lost", () => {
+  // Arrange
+  const knobelscheit = new Knobelscheit;
+  knobelscheit.flip([1,2,3,4,5,6,7,8], 36);
+
+  // Act
+  const lost = knobelscheit.checkIfLost(10);
+
+
+  // Assert
+  assertEquals(lost, true)
+
+})
+
+Deno.test("Checks if lost case won", () => {
+  // Arrange
+  const knobelscheit = new Knobelscheit;
+  knobelscheit.flip([1,2,3,4,5,6,7,8], 36);
+
+  // Act
+  const lost = knobelscheit.checkIfLost(9);
+
+
+  // Assert
+  assertEquals(lost, false)
+
+})
