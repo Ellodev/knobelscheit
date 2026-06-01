@@ -12,7 +12,7 @@ while (gameIsRunning) {
     const dice2 = rollDice();
     console.log("Dice 1: " + dice1);
     console.log("Dice 2: " + dice2);
-    console.log("currently flipped: " + knobelscheit.flipped.size)
+    console.log("currently open: " + knobelscheit.notFlipped())
     let numberString = prompt("enter the numbers you wish to flip (1-9), seperated by commas")
     const stringArray: string[] | undefined = numberString?.split(",");
     if (stringArray === undefined) {
@@ -21,4 +21,10 @@ while (gameIsRunning) {
         const numberArray: number[] = stringArray.map((i) => (Number(i)));
         knobelscheit.flip(numberArray, (dice1 + dice2));
     }
+    if(knobelscheit.checkWin())
+    {
+        console.log("Congratulations you won!");
+        gameIsRunning = false;
+    }
+
 }

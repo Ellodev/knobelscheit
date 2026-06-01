@@ -77,3 +77,16 @@ Deno.test("Checks if lost case won", () => {
   assertEquals(lost, false)
 
 })
+
+Deno.test("Returns array of not flipped numbers", () => {
+  // Arrange
+  const knobelscheit = new Knobelscheit;
+  knobelscheit.flip([2,3,4,5,6,7,8], 35);
+
+  // Act
+  const notFlippedNumbers: number[] = knobelscheit.notFlipped();
+
+  // Assert
+  assertEquals(notFlippedNumbers, [1,9])
+
+})

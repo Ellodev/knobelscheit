@@ -44,4 +44,15 @@ export class Knobelscheit {
         }
 
     }
+
+    notFlipped():Array<number> {
+        const open: number[] = [];
+        for (let i = 1; i <= 9; i++){
+            if(!this.flipped.has(i))
+            {
+                open.push(i);
+            }
+        }
+        return open
+    }
 }
