@@ -1,5 +1,5 @@
 export class Knobelscheit {
-    private flipped: Set<Number> = new Set;
+    public readonly flipped: Set<Number> = new Set;
     
     flip(toFlip: number[], diceResult: number): boolean {
         let totalToFlip = 0;
@@ -24,6 +24,7 @@ export class Knobelscheit {
             return false;
         }
     }
+
     checkIfLost(n: number):boolean {
         let open = 0
         for(let i = 1; i <= 9; i++)
