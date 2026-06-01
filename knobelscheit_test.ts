@@ -64,6 +64,20 @@ Deno.test("Checks if lost case lost", () => {
 
 })
 
+Deno.test("Checks if lost case lost (when doesn't have the numbers for it anymore)", () => {
+  // Arrange
+  const knobelscheit = new Knobelscheit;
+  knobelscheit.flip([1,2,5,6,7,8], 29);
+
+  // Act
+  const lost = knobelscheit.checkIfLost(5);
+
+
+  // Assert
+  assertEquals(lost, true)
+
+})
+
 Deno.test("Checks if lost case won", () => {
   // Arrange
   const knobelscheit = new Knobelscheit;

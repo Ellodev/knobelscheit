@@ -1,5 +1,6 @@
 export class Knobelscheit {
-    public readonly flipped: Set<Number> = new Set;
+    private flipped: Set<Number> = new Set;
+    
     
     flip(toFlip: number[], diceResult: number): boolean {
         let totalToFlip = 0;
@@ -25,24 +26,30 @@ export class Knobelscheit {
         }
     }
 
-    checkIfLost(n: number):boolean {
-        let open = 0
-        for(let i = 1; i <= 9; i++)
-        {
+    checkIfLost(diceTotal: number):boolean {
+        const open: number[] = [];
+        for (let i = 1; i <= 9; i++){
             if(!this.flipped.has(i))
             {
-                open += i
+                open.push(i);
             }
         }
-        if(n > open)
-        {
-            return true
-        }
-        else
-        {
-            return false
-        }
-
+        let canContinue : boolean = false;
+            open.forEach((number) => {
+                if (diceTotal === number) {
+                    canContinue = true;
+                }
+                open.forEach((otherNumber) => {
+                    if (number !== otherNumber && diceTotal === (number + otherNumber)) {
+                    canContinue = true;
+                    }
+                })
+            })
+        if (canContinue) {
+            return false;
+        } else {
+            return true;   
+       }
     }
 
     notFlipped():Array<number> {

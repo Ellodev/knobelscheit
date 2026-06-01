@@ -13,6 +13,10 @@ while (gameIsRunning) {
     console.log("Dice 1: " + dice1);
     console.log("Dice 2: " + dice2);
     console.log("currently open: " + knobelscheit.notFlipped())
+    if (knobelscheit.checkIfLost(dice1 + dice2)) {
+        console.log("Sadly you don't have any way to win anymore, you lost.. :(");
+        gameIsRunning = false;
+    }
     let numberString = prompt("enter the numbers you wish to flip (1-9), seperated by commas")
     const stringArray: string[] | undefined = numberString?.split(",");
     if (stringArray === undefined) {
